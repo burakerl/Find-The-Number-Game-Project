@@ -105,7 +105,7 @@ body {
   background-color: lightgrey;
   border-radius: 5px;
   border: none;
-  
+  margin-right: 25px;
 }
 .again-btn:hover,
 #btn:hover {

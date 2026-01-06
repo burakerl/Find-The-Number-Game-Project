@@ -1,7 +1,6 @@
 // VARIABLES
 let randomNumber = Math.trunc(Math.random() * 100);
 let hp = 6;
-console.log(randomNumber);
 
 //DOM ELEMENTS
 const userNumber = document.getElementById("number");
@@ -15,6 +14,8 @@ const heart = document.querySelector(".fa-solid");
 const imgContainer = document.querySelector(".img-container");
 const imgNumber = document.createElement("h1");
 imgNumber.classList.add("img-number");
+const arrowUp = document.querySelector(".fa-arrow-up");
+const arrowDown = document.querySelector(".fa-arrow-down");
 
 // BUTTON CLICKS
 submitButton.addEventListener("click", evaluateInput);
@@ -38,14 +39,16 @@ function evaluateInput() {
     alert("Lütfen Bir Sayı Girin.");
   } else if (isNaN(number)) {
     alert("Lütfen Bir Sayı Girin.");
+  } else if (number > 100 || number < 1) {
+    alert("Lütfen 1-100 arasında bir sayı girin.");
   } else if (number > randomNumber) {
     hint.innerHTML = `Guess lower!`;
     loseHp();
-    console.log(hp);
+    highlightDownArrow();
   } else if (number < randomNumber) {
     hint.innerHTML = `Guess higher!`;
     loseHp();
-    console.log(hp);
+    highlightUpArrow();
   } else if (number == randomNumber) {
     winState();
   }
@@ -79,4 +82,14 @@ function checkHp() {
 
 function playAgain() {
   location.reload();
+}
+
+function highlightUpArrow() {
+  arrowUp.style.color = "black";
+  arrowDown.style.color = "white";
+}
+
+function highlightDownArrow() {
+  arrowDown.style.color = "black";
+  arrowUp.style.color = "white";
 }
